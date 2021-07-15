@@ -13,7 +13,6 @@ import json
 class CreateTodo(APIView):
 
     def post(self,request,*args,**kwargs):
-        print(request.data)
         form_data = json.loads(json.dumps(request.data))
         if not(form_data.__contains__('task')):
             return JsonResponse ({"success":False,"message":"Task field is essential"})
