@@ -38,9 +38,7 @@ class CreateTodo(APIView):
 class UpdateTodo(APIView):
 
     def put(self,request,*args,**kwargs):
-        print(request.data)
         form_data = json.loads(json.dumps(request.data))
-        print(form_data)
         if not(form_data.__contains__('id')):
             return JsonResponse({"success":False,"message":"Id is essential field"})
 
@@ -52,9 +50,7 @@ class UpdateTodo(APIView):
         except Todo.DoesNotExist:
             return JsonResponse({"success":False,"message":"task does not exist"})
         
-        print(type(form_data))
         serializer = TodoUpdateSerializer(todo,data=form_data)
-        print(serializer.is_valid())
         if serializer.is_valid():
             serializer.save()
             data={
