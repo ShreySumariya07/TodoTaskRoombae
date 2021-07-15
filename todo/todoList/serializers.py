@@ -15,6 +15,7 @@ class TodoUpdateSerializer(serializers.ModelSerializer):
         model = Todo
         fields = ['id','task','eta','complete']
     
+    
 class TodoShowSerializer(serializers.ModelSerializer):
 
     class Meta:
